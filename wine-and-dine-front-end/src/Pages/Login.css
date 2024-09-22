@@ -1,0 +1,52 @@
+#LoginLogo {
+  width: 70%;
+}
+
+#login p {
+  margin: 0;
+}
+
+.loginWrapper {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: 100px auto 200px auto;
+}
+
+#inputFields {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#login h2 {
+  font-size: 60px;
+  font-family: Mistral;
+  color: #454745;
+}
+
+#inputFields input {
+  width: 650px;
+  border: 1px solid #454745;
+}
+
+.rec_button {
+  width: 80%;
+  border-radius: 5px;
+  border: none;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.rec_button:hover {
+  background-color: #e1c16e;
+  color: white;
+}
+
+.register-button {
+  color: #e1c16e;
+}

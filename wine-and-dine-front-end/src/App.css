@@ -1,0 +1,23 @@
+.horizontal-flex {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.vertical-flex {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+body {
+  background-image: url("./images/background-image.png");
+  background-size: cover;
+  background-position: center bottom;
+  margin: 0;
+  padding: 0;
+}
+
+
+

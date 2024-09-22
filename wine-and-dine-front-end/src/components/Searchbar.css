@@ -1,0 +1,40 @@
+#Search {
+  width: 70%;
+  max-width: 80%;
+  margin: 2rem;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#Search input {
+  height: 50px;
+  width: 400px;
+  border: 2px solid #e1c16e;
+  border-radius: 10px;
+}
+
+#Search button {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  border: 2px solid #e1c16e;
+  cursor: pointer;
+}
+
+.search-button {
+  background-color: #e1c16e;
+  font-size: 10px;
+}
+
+.search-button img {
+  height: 30px;
+  padding: auto;
+}
+
+.clear-button {
+  background-color: white;
+  font-size: 30px;
+  color: #e6bf53;
+}

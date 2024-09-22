@@ -1,0 +1,14 @@
+.content {
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 150px auto;
+}
+
+.text-content {
+  text-align: center;
+  font-size: 2.2rem;
+  margin: 20px;
+  font-family: Mistral;
+  color: #2d332f;
+}

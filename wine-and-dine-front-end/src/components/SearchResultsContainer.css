@@ -1,0 +1,23 @@
+#resultsContainer {
+  background-color: #e1c16e;
+  border-radius: 2rem;
+  width: 20rem;
+  max-width: 30%;
+  height: 25rem;
+  max-height: 60%;
+  padding: 1rem;
+  box-sizing: border-box;
+  margin: 1rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#result {
+  background-color: aliceblue;
+  border-radius: 0.7rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+#result:hover {
+  background-color: #ffd3d3;
+}

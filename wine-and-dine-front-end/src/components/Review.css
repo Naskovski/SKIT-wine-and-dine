@@ -1,0 +1,39 @@
+#Review{
+    border: 1px solid #dbb569;
+    border-radius: 1rem;
+    width: 30%;
+    max-width: 25rem;
+    height: 15rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    margin: 1rem;
+    transition: 0.5s;
+}
+#Review:hover{
+    box-shadow: -1px 9px 16px 16px rgba(0,0,0,0.11);
+    -webkit-box-shadow: -1px 9px 16px 16px rgba(0,0,0,0.11);
+    -moz-box-shadow: -1px 9px 16px 16px rgba(0,0,0,0.11);
+}
+
+.description{
+    height: 60%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+h1{
+    display: inline-block;
+    padding-left: 0.5rem;
+    margin: 0;
+}
+h4{
+    color: #454745;
+    margin: 0;
+    padding: 0.3rem;
+    text-align: center;
+    font-weight: lighter;
+}
+
+#Review span{
+    vertical-align: middle;
+}

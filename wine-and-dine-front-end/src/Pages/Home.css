@@ -1,0 +1,89 @@
+.home {
+  width: 75%;
+  margin: auto auto 150px auto;
+}
+
+.buttons{
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  display: flex;
+  margin: auto;
+  margin-top: 20px;
+  font-size: 30px;
+  color: #808080;
+  gap: 5px;
+}
+
+.buttons button{
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #808080;
+  font-family: 'Open sans', sans-serif;
+  transition: 0.5s;
+}
+
+button:disabled{
+  opacity: 0.5;
+}
+
+button:hover:not(button:disabled){
+  color: #2b2b29;
+}
+
+.review-container{
+  flex-wrap: wrap;
+}
+.review-section button{
+  padding: 0.5rem 2rem;
+  box-sizing: border-box;
+  border: 1px solid #dbb569;
+  border-radius: 1rem;
+  color: #454745;
+  background-color: #00000000;
+  width: 10rem;
+  height: 3rem;
+  transition: 0.5s;
+  margin: auto;
+}
+
+.review-section button:hover{
+  color: #2b2b29;
+  background-color: #f2f2f2;
+  border: 1px solid #e6bf53;
+  cursor: pointer;
+}
+
+.home input, .home textarea{
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  border: 1px solid #dbb569;
+  border-radius: 1rem;
+  color: #454745;
+  width: 30rem;
+
+}
+
+.home input{
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  padding-right: 0;
+  text-align: center;
+}
+
+.home textarea{
+  resize: none;
+  height: 10rem;
+}
+
+.home label{
+  display: inline-block;
+  width: min-content;
+  margin: 0 auto 16px;
+  text-align: center;
+  border-bottom: 1px solid #cecece;
+  padding: 1rem;
+}
