@@ -24,41 +24,43 @@ import java.util.HashMap;
 public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserRepo userRepository;
     private final PasswordEncoder passwordEncoder;
-
     private final AuthenticationManager authenticationManager;
     private final JWTService jwtService;
-    public User signUp(SignUpRequest signUpRequest){
-        User user=new User();
+
+    public User signUp(SignUpRequest signUpRequest) {
+        User user = new User();
         user.setEmail(signUpRequest.getEmail());
         user.setFirstName(signUpRequest.getFirstName());
-        System.out.println("Sign up req:"+signUpRequest);
+        System.out.println("Sign up req:" + signUpRequest);
         user.setRoles(Role.USER);
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
         return userRepository.save(user);
 
 
     }
-    public JwtAuthenticationDto login(SignInRequest sign){
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(sign.getEmail(),sign.getPassword()));
-        var user=userRepository.findByEmail(sign.getEmail()).orElseThrow(()->new IllegalArgumentException("Invalid Email or password"));
-        var jwt=jwtService.generateToken(user);
-        var refreshToken= jwtService.generateRefreshToken(new HashMap<>(),user);
-        JwtAuthenticationDto jwtAuthenticationDto=new JwtAuthenticationDto();
+
+    public JwtAuthenticationDto login(SignInRequest sign) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(sign.getEmail(), sign.getPassword()));
+        var user = userRepository.findByEmail(sign.getEmail()).orElseThrow(() -> new IllegalArgumentException("Invalid Email or password"));
+        var jwt = jwtService.generateToken(user);
+        var refreshToken = jwtService.generateRefreshToken(new HashMap<>(), user);
+        JwtAuthenticationDto jwtAuthenticationDto = new JwtAuthenticationDto();
         jwtAuthenticationDto.setToken(jwt);
         jwtAuthenticationDto.setRefreshToken(jwt);
         return jwtAuthenticationDto;
 
     }
-public JwtAuthenticationDto refreshToken(RefreshTokenRequest refreshTokenRequest){
-        String userEmail=jwtService.extractUserName(refreshTokenRequest.getToken());
-        User user=userRepository.findByEmail(userEmail).orElseThrow();
-        if(jwtService.isTokenValid(refreshTokenRequest.getToken(),user)){
-            var jwt=jwtService.generateToken(user);
-            JwtAuthenticationDto jwtAuthenticationDto=new JwtAuthenticationDto();
+
+    public JwtAuthenticationDto refreshToken(RefreshTokenRequest refreshTokenRequest) {
+        String userEmail = jwtService.extractUserName(refreshTokenRequest.getToken());
+        User user = userRepository.findByEmail(userEmail).orElseThrow();
+        if (jwtService.isTokenValid(refreshTokenRequest.getToken(), user)) {
+            var jwt = jwtService.generateToken(user);
+            JwtAuthenticationDto jwtAuthenticationDto = new JwtAuthenticationDto();
             jwtAuthenticationDto.setToken(jwt);
             jwtAuthenticationDto.setRefreshToken(refreshTokenRequest.getToken());
             return jwtAuthenticationDto;
         }
         return null;
-}
+    }
 }

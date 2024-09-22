@@ -40,6 +40,7 @@ public class JWTServiceImpl implements JWTService {
 
 
     }
+
     public String extractUserName(String token){
         return extraClaim(token,Claims::getSubject);
     }
@@ -48,15 +49,18 @@ public class JWTServiceImpl implements JWTService {
         return claimResolvers.apply(claims);
 
     }
+
     private Key getSignKey(){
         byte [] key= Decoders.BASE64.decode("413F4428472B4B625065536856605970337336763979244226452948404D6351");
         return Keys.hmacShaKeyFor(key);
 
     }
+
     private Claims extractAllClaims(String token){
         return Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token).getBody();
 
     }
+
     public boolean isTokenValid(String token,UserDetails userDetails){
         final String username=extractUserName(token);
         return (username.equals(userDetails.getUsername())&& !isTokenExpired(token));

@@ -54,6 +54,7 @@ public class WineryServiceImpl implements WineryService {
     public void deleteById(Long id) {
         wineryRepository.deleteById(id);
     }
+
     @Override
     public void edit(Long id, String name, String phone, String website, Double longitude, Double latitude, String openHours, String closeHours) throws Exception {
         Winery winery = wineryRepository.findById(id).orElseThrow(Exception::new);
