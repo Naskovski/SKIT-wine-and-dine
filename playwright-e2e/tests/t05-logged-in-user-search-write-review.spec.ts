@@ -4,7 +4,7 @@ import { HomePage } from "../model/pages/home.page";
 import { LoginPage } from "../model/pages/login.page";
 
 
-test('Legged In user, Search winery, Write review', async ({ page }) => {
+test('Logged In user, Search winery, Write review', async ({ page }) => {
     let homepage = new HomePage(page);
     let loginPage = new LoginPage(page);
 
