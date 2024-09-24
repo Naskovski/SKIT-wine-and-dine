@@ -36,7 +36,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
         return userRepository.save(user);
 
-
     }
 
     public JwtAuthenticationDto login(SignInRequest sign) {
