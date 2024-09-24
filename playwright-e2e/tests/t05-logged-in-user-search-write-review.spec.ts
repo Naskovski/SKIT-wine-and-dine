@@ -16,7 +16,10 @@ test('Logged In user, Search winery, Write review', async ({ page }) => {
 
     await homepage.searchWinery('popov');
     await homepage.selectWineryInResultList(0);
-    await homepage.addReview(5, 'Very nice!');
+
+    const reviewText = 'Not bad'+Math.random()*1000;
+    await homepage.addReview(3, reviewText);
     await homepage.readReviewsAction();
     await homepage.validateReviewsAreDisplayed();
+    await homepage.validateReviewIsPresent(3, reviewText, "Filip Naskovski");
 });
