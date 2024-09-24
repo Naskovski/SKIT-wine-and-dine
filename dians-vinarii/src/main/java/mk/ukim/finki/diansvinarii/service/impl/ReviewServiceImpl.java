@@ -62,7 +62,7 @@ public class ReviewServiceImpl implements ReviewService {
         User createdBy =  userService.findById(userId);
 
 
-        if ((score == 5 && desc.length() < 20) || (score <= 2 && desc.contains("одлично"))) {
+        if ((score == 5 && desc.length() < 20) || (score != 2 && desc.contains("одлично"))) {
             throw new IllegalArgumentException("Inconsistent review");
         }
 
