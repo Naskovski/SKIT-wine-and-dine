@@ -1,0 +1,18 @@
+import { test } from '@playwright/test';
+import { URL } from '../model/config'
+import { HomePage } from "../model/pages/home.page";
+
+
+test('Anonymous User, read review', async ({ page }) => {
+    let homepage = new HomePage(page);
+
+    await page.goto(URL.home);
+
+    await homepage.selectWineryByName('Winery „Popov“');
+
+    await homepage.checkIfActionsAreEnabled(['Добиј Рута', 'Читај Мислење']);
+    await homepage.checkIfActionsAreDisabled(['Додади Мислење']);
+
+    await homepage.readReviewsAction();
+    await homepage.validateReviewsAreDisplayed();
+});
