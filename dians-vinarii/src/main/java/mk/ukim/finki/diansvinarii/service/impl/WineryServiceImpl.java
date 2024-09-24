@@ -22,7 +22,7 @@ public class WineryServiceImpl implements WineryService {
 
     @Override
     public List<Winery> searchWineries(String name) {
-        return wineryRepository.findAllByNameContainingIgnoreCase(name.trim().toLowerCase());
+        return wineryRepository.findAllByNameContainingIgnoreCase(name.trim());
     }
 
     @Override
