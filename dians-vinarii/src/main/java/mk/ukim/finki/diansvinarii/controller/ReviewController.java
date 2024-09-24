@@ -3,6 +3,8 @@ package mk.ukim.finki.diansvinarii.controller;
 import mk.ukim.finki.diansvinarii.model.Review;
 import mk.ukim.finki.diansvinarii.service.impl.ReviewServiceImpl;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,20 +45,29 @@ public class ReviewController {
     }
 
     @PostMapping("/add/{id}")
-    public Review addReview(@PathVariable Long id,
-                            @RequestBody Map<String, Object> requestBody) {
-
+    public ResponseEntity<?> addReview(@PathVariable Long id,
+                                       @RequestBody Map<String, Object> requestBody) {
         String timestampString = (String) requestBody.get("timestamp");
-        System.out.println(timestampString);
         LocalDateTime timestamp = LocalDateTime.parse(timestampString, DateTimeFormatter.ISO_DATE_TIME);
 
         int score = (int) requestBody.get("score");
         String desc = (String) requestBody.get("desc");
         Long userId = Long.valueOf((Integer) requestBody.get("userId"));
 
-
-        return reviewService.create(id, score, desc, timestamp, userId);
+        try {
+            Review review = reviewService.create(id, score, desc, timestamp, userId);
+            return ResponseEntity.ok(review);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An unexpected error occurred: " + e.getMessage());
+        }
     }
+
 
 
 

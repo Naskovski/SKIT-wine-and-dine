@@ -57,15 +57,15 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewRepository.save(review);
     }
 
-    public Review create(Long id, int score, String desc, LocalDateTime timestamp, Long userId) {
-        Winery winery = null;
-        User createdBy = null;
-        try {
-            winery = wineryService.findById(id).orElse(null);
-            createdBy = userService.findById(userId);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    public Review create(Long id, int score, String desc, LocalDateTime timestamp, Long userId) throws IllegalArgumentException {
+        Winery winery = wineryService.findById(id).orElseThrow(IllegalArgumentException::new);
+        User createdBy =  userService.findById(userId);
+
+
+        if ((score == 5 && desc.length() < 20) || (score <= 2 && desc.contains("одлично"))) {
+            throw new IllegalArgumentException("Inconsistent review");
         }
+
         Review review = new Review(score, desc, winery, timestamp, createdBy);
         return reviewRepository.save(review);
     }

@@ -85,4 +85,11 @@ export class HomePage {
         await this.page.locator('button').filter({hasText: 'Внеси'}).click();
         await response;
     }
+
+    async validateReviewIsPresent(grade: number, text: string, username: string) {
+        const reviewLocator = this.page.locator('.review').filter({hasText: text});
+        await expect(reviewLocator).toContainText(String(grade));
+        await expect(reviewLocator).toContainText(username);
+        await expect(reviewLocator).toContainText(new Date().toDateString());
+    }
 }

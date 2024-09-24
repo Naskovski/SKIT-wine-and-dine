@@ -31,8 +31,8 @@ public class WineryServiceImpl implements WineryService {
     }
 
     @Override
-    public Optional<Winery> findById(Long id) throws Exception {
-        return Optional.ofNullable(wineryRepository.findById(id).orElseThrow(Exception::new));
+    public Optional<Winery> findById(Long id) {
+        return wineryRepository.findById(id);
     }
 
     @Override

@@ -21,6 +21,8 @@ const Home = () => {
     const [newReviewDesc, setNewReviewDesc] = useState("");
     const [newReviewScore, setNewReviewScore] = useState(0);
 
+    const [errorMessage, setErrorMessage] = useState('');
+
 
     useEffect(() => {
         if(highlighted==null) setDisplay(null);
@@ -83,6 +85,12 @@ const Home = () => {
                 fetchReviews();
                 fetchScore();
                 setDisplay("read");
+            } else if (response.status === 400){
+                console.error("Bad request:", response.body);
+                setErrorMessage("Некоректно мислење, за високата оценка треба да внесете повеќе опис, а за ниската оценка не треба да го користите зборот одлично");
+                setTimeout(() => {
+                    setErrorMessage("");
+                }, 5000);
             } else {
                 console.error("Server side error adding review:", response.statusText);
             }
@@ -111,7 +119,7 @@ const Home = () => {
                         onClick={()=>setDisplay("add")}
                 >Додади Мислење</button>
             </div>
-
+            {errorMessage !== "" && <div className={"error-message"}>{errorMessage}</div>}
             {display==="read" && reviewData.length===0 && <h3 style={{textAlign: "center"}}> За жал, нема внесени мислења за избраната винарија</h3>}
             {display==="read" && reviewData.length>0 && <div style={{padding: "2rem"}} className={'review-section'}>
 

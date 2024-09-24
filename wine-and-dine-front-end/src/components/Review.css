@@ -1,4 +1,4 @@
-#Review{
+.review{
     border: 1px solid #dbb569;
     border-radius: 1rem;
     width: 30%;
@@ -9,7 +9,7 @@
     margin: 1rem;
     transition: 0.5s;
 }
-#Review:hover{
+.review:hover{
     box-shadow: -1px 9px 16px 16px rgba(0,0,0,0.11);
     -webkit-box-shadow: -1px 9px 16px 16px rgba(0,0,0,0.11);
     -moz-box-shadow: -1px 9px 16px 16px rgba(0,0,0,0.11);
@@ -34,6 +34,6 @@ h4{
     font-weight: lighter;
 }
 
-#Review span{
+.review span{
     vertical-align: middle;
 }
